@@ -101,7 +101,7 @@ The phase 2 is circuit-specific. Execute the following command to start the gene
 
 Contribute to the phase 2 of the ceremony:
 
-- snarkjs zkey contribute myfirstcircuit.zkey myfirstcircuit_0001.zkey --name="1st Contributor Name" -v
+- snarkjs zkey contribute myfirstcircuit_0000.zkey myfirstcircuit_0001.zkey --name="1st Contributor Name" -v
 
 Export the verification key:
 

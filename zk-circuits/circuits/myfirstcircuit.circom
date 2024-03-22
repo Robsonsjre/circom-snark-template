@@ -8,10 +8,12 @@ template MultiplierEqualTo16 () {
    signal input a;  
    signal input b; 
    signal output c <-- 16; 
+   signal output d;
 //    signal output c;  
 
    // Constraints.  
-   c === a * b;  
+   c === a * b;
+   d <-- b;
 }
 
- component main = MultiplierEqualTo16 ();
+ component main {public [a]} = MultiplierEqualTo16 ();

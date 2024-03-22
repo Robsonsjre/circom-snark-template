@@ -9,17 +9,17 @@ Circom_TemplateFunction _functionTable[1] = {
 MultiplierEqualTo16_0_run };
 Circom_TemplateFunction _functionTableParallel[1] = { 
 NULL };
-uint get_main_input_signal_start() {return 2;}
+uint get_main_input_signal_start() {return 3;}
 
 uint get_main_input_signal_no() {return 2;}
 
-uint get_total_signal_no() {return 4;}
+uint get_total_signal_no() {return 5;}
 
 uint get_number_of_components() {return 1;}
 
 uint get_size_of_input_hashmap() {return 256;}
 
-uint get_size_of_witness() {return 4;}
+uint get_size_of_witness() {return 5;}
 
 uint get_size_of_constants() {return 1;}
 
@@ -86,10 +86,16 @@ PFrElement aux_dest = &signalValues[mySignalStart + 0];
 // end load src
 Fr_copy(aux_dest,&circuitConstants[0]);
 }
-Fr_mul(&expaux[2],&signalValues[mySignalStart + 1],&signalValues[mySignalStart + 2]); // line circom 14
-Fr_eq(&expaux[0],&signalValues[mySignalStart + 0],&expaux[2]); // line circom 14
-if (!Fr_isTrue(&expaux[0])) std::cout << "Failed assert in template/function " << myTemplateName << " line 14. " <<  "Followed trace of components: " << ctx->getTrace(myId) << std::endl;
+Fr_mul(&expaux[2],&signalValues[mySignalStart + 2],&signalValues[mySignalStart + 3]); // line circom 15
+Fr_eq(&expaux[0],&signalValues[mySignalStart + 0],&expaux[2]); // line circom 15
+if (!Fr_isTrue(&expaux[0])) std::cout << "Failed assert in template/function " << myTemplateName << " line 15. " <<  "Followed trace of components: " << ctx->getTrace(myId) << std::endl;
 assert(Fr_isTrue(&expaux[0]));
+{
+PFrElement aux_dest = &signalValues[mySignalStart + 1];
+// load src
+// end load src
+Fr_copy(aux_dest,&signalValues[mySignalStart + 3]);
+}
 for (uint i = 0; i < 0; i++){
 uint index_subc = ctx->componentMemory[ctx_index].subcomponents[i];
 if (index_subc != 0)release_memory_component(ctx,index_subc);
