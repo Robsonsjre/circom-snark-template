@@ -9,6 +9,7 @@ EthSamba 2024 - Zero Knowledge na prática - Blind Auction
 - Circuits library: https://github.com/iden3/circomlib
 - Blind auction MIT Paper: https://courses.csail.mit.edu/6.857/2019/project/18-doNascimento-Kumari-Ganesan.pdf
 - Example Repo combining with frontend: https://github.com/heivenn/zk-blind-auction
+- ZAMA and about FHE: https://github.com/zama-ai/awesome-zama
 
 # 1) Initial Setup
 
@@ -123,3 +124,14 @@ Example for this one: `{"a": "1", "b": "16"}`
 It requires the Verification Key (last output from 2.3.2) and the witness file.
 
 - snarkjs groth16 prove ./myfirstcircuit_0001.zkey witness.wtns proof.json public.json
+
+### 2.7) Verify the proof
+
+### 2.7.1) Via snarkjs
+
+snarkjs groth16 verify verification_key.json public.json proof.json
+
+### 2.7.2) Via Smart Contracts
+
+snarkjs zkey export solidityverifier multiplier2_0001.zkey verifier.sol
+
