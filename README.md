@@ -41,3 +41,34 @@ Obs: Does not foget quotes in the end of the Alias path
 ## 1.3) Install snarkjs
 
 > npm install -g snarkjs
+
+
+# 2) Our first Circuit
+
+- 2.1) Create a folder called 'circuits' and a file inside there called 'myfirstcircuit.circom'
+
+````
+pragma circom 2.0.0;
+
+/*This circuit template checks that 16 is the multiplication of a and b.*/  
+
+template MultiplierEqualTo16 () {  
+
+   // Declaration of signals.  
+   signal input a;  
+   signal input b; 
+   signal output c <-- 16; 
+
+   // Constraints.  
+   c === a * b;  
+}
+
+ component main = MultiplierEqualTo16 ();
+````
+
+### 2.2) Compile the circuit
+
+The command to run the circuit is: 
+`circom ./circuits/myfirstcircuit.circom  --r1cs --wasm --sym --c`
+
+where: 
